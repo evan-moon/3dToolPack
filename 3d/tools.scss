@@ -1,0 +1,130 @@
+.editor-aside {
+    .btn-group {
+        label {
+            float: left;
+            margin-right: 10px;
+        }
+    }
+    .btn {
+        border: none;
+        background: $glay-color;
+        min-width: 43px;
+        min-height: 43px;
+        background-size: cover;
+        transition: all 0.1s;
+        &.selected {
+            background: #333;
+            color: $mint-color
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .chosen-container {
+        width: 100% !important;
+    }
+
+    .controller-tab {
+        position: relative;
+
+        .texture-viewer {
+            width: 43px;
+            height: 43px;
+            padding: 0;
+            img {
+                width: 100%;
+            }
+        }
+        .color-viewer {
+            display: inline-block;
+            min-width: 43px;
+            min-height: 43px;
+        }
+        input[colorpicker] {
+            display: none;
+        }
+    }
+
+    // ROTATE TOOLS...
+    rotate-tool {
+        .btn-group-wrapper.rotate-axis-controller {
+            .btn-group {
+                .btn:disabled {
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    // LIGHT TOOLS...
+
+    light-tool {
+        .light-generator {
+            position: relative;
+            border: 1px solid $glay-color;
+            padding: 10px;
+            &.selected {
+                border: 1px solid $mint-color;
+                background: #383838;
+                p {
+                    color: $mint-color;
+                }
+            }
+
+            p {
+                height: 30px;
+            }
+            .switcher {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        .light-controller {
+            margin-top: 30px;
+
+            .light-control-unit {
+                margin: 5px 0;
+
+                .light-color-selector {
+                    display: block;
+                    margin: 10px 0;
+                }
+                &:first-child {
+                    margin-top: 10px;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .btn-group-wrapper {
+                .btn-group {
+                    width: 100%;
+                    .btn {
+                        width: 33.3333333%;
+                        padding: 10px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    diffuse-tool, specular-tool {
+        .btn-group.fill-type-selector {
+            width: 100%;
+            .btn {
+                width: 50%;
+            }
+        }
+    }
+}
+
+.texture-uploader.editor-modal {
+    .modal-body {
+        text-align: left;
+    }
+}

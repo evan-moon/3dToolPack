@@ -1,0 +1,31 @@
+<div class="rotateTool" ng-class="{'selected' : toggleOn}">
+    <switcher
+        ng-model="toggleOn"
+        ng-change="toggleAction(newValue,oldValue)"
+    ></switcher>
+    <div class="rotate-axis-controller">
+        <div class="btn-group-wrapper">
+            <div class="btn-group">
+                <button type="button" class="btn" ng-click="rotateCW('x')">+</button>
+                <button type="button" class="btn" disabled>X</button>
+                <button type="button" class="btn" ng-click="rotateCCW('x')">-</button>
+            </div>
+        </div>
+
+        <div class="btn-group-wrapper">
+            <div class="btn-group">
+                <button type="button" class="btn" ng-click="rotateCW('y')">+</button>
+                <button type="button" class="btn" disabled>Y</button>
+                <button type="button" class="btn" ng-click="rotateCCW('y')">-</button>
+            </div>
+        </div>
+
+        <div class="btn-group-wrapper">
+            <div class="btn-group">
+                <button type="button" class="btn" ng-click="rotateCW('z')">+</button>
+                <button type="button" class="btn" disabled>Z</button>
+                <button type="button" class="btn" ng-click="rotateCCW('z')">-</button>
+            </div>
+        </div>
+    </div>
+</div>

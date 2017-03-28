@@ -1,0 +1,33 @@
+<div class="material-controller">
+    <div class="btn-group fill-type-selector">
+        <button type="button" class="btn" ng-class="{'selected' : selectedTab === 'texture'}" ng-click="tabAction('texture')">Texture</button>
+        <button type="button" class="btn" ng-class="{'selected' : selectedTab === 'color'}" ng-click="tabAction('color')">Color</button>
+    </div>
+    <div class="controller-tab" ng-show="selectedTab === 'texture'">
+        <button type="button" class="btn texture-viewer" ng-click="modalOpen()">
+            <img ng-if="selectedTexture" ngf-thumbnail="selectedTexture" ngf-size="{width: 500, height: 500, quality: 1}" />
+            <img ng-if="!selectedTexture" src="assets/images/editor/transparent.png" />
+        </button>
+        <rzslider
+            rz-slider-model="modelOpacity"
+            rz-slider-options="sliderOptions"
+        ></rzslider>
+    </div>
+    <div class="controller-tab" ng-show="selectedTab === 'color'">
+        <spectrum-colorpicker
+            ng-model="modelColor"
+            format="'hex'"
+            options="{
+                showInput: true,
+                showInitial: true,
+                chooseText: 'OK',
+                cancelText: 'CANCEL'
+            }"
+            on-change="changeColor(color)"
+        ></spectrum-colorpicker>
+        <rzslider
+            rz-slider-model="modelOpacity"
+            rz-slider-options="sliderOptions"
+        ></rzslider>
+    </div>
+</div>

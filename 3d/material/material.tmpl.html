@@ -1,0 +1,9 @@
+<div>
+    <select
+        ui-select2="selectBoxOptions"
+        ng-change="changeEvent(material)"
+        ng-model="output"
+        ng-options="material as material.name for material in materialList"
+    >
+    </select>
+</div>

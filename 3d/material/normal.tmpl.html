@@ -1,0 +1,12 @@
+<div class="material-controller">
+    <div class="controller-tab">
+        <button type="button" class="btn texture-viewer" ng-click="modalOpen()">
+            <img ng-if="selectedTexture" ngf-thumbnail="selectedTexture" ngf-size="{width: 500, height: 500, quality: 1}" />
+            <img ng-if="!selectedTexture" src="assets/images/editor/transparent.png" />
+        </button>
+        <rzslider
+            rz-slider-model="modelNormalScale"
+            rz-slider-options="sliderOptions"
+        ></rzslider>
+    </div>
+</div>

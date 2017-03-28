@@ -1,0 +1,36 @@
+<div class="map-controller">
+    <div class="btn-group">
+        <button type="button" class="btn" ng-class="{'selected' : selectedTab === '3d'}" ng-click="tabAction('3d')">3D</button>
+        <button type="button" class="btn" ng-class="{'selected' : selectedTab === '2d'}" ng-click="tabAction('2d')">2D</button>
+    </div>
+    <div class="controller-tab" ng-show="selectedTab === '3d'">
+        <select
+            ui-select2="selectBoxOptions"
+            class="black"
+            ng-model="selectedMapIndex"
+            ng-change="changeMap()"
+            ng-options="map.id as map.name for map in maps._3d"
+        >
+        </select>
+    </div>
+    <div class="controller-tab" ng-show="selectedTab === '2d'">
+        <spectrum-colorpicker
+            ng-model="mapColor"
+            format="'hex'"
+            options="{
+                showInput: true,
+                showInitial: true,
+                chooseText: 'OK',
+                cancelText: 'CANCEL'
+            }"
+            on-change="changeColor(color)"
+        ></spectrum-colorpicker>
+        <select
+            ui-select2="selectBoxOptions"
+            ng-model="selectedMapIndex"
+            ng-options="map.id as map.name for map in maps._2d"
+            ng-change="changeMap()"
+        >
+        </select>
+    </div>
+</div>

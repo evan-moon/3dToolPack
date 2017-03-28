@@ -1,0 +1,69 @@
+<div>
+    <div ng-repeat="light in lights" class="light-generator" ng-class="{'selected' : light.name === selectedLight.name}">
+        <p ng-click="changeLight($index)">{{light.name | camelCaseFilter}}</p>
+        <switcher
+            ng-model="light.enable"
+            ng-change="enableLight(newValue,oldValue,light)"
+        ></switcher>
+    </div>
+    <div class="light-controller" ng-if="selectedLight">
+        <div class="btn-group-wrapper">
+            <div class="btn-group">
+                <button
+                    type="button"
+                    class="btn"
+                    ng-repeat="type in lightTypes"
+                    ng-class="{'selected' : selectedLight.config.type === type}"
+                    ng-click="changeLightType(type)"
+                    ng-disabled="!selectedLight"
+                >{{type | camelCaseFilter}}</button>
+            </div>
+        </div>
+        <div>
+            <div class="light-control-unit">
+                <h5>Color</h5>
+                <spectrum-colorpicker
+                    ng-model="selectedLight.config.color"
+                    class="light-color-selector"
+                    format="'hex'"
+                    options="{
+                        showInput: true,
+                        showInitial: true,
+                        chooseText: 'OK',
+                        cancelText: 'CANCEL'
+                    }"
+                    on-change="changeColor(color)"
+                ></spectrum-colorpicker>
+            </div>
+
+            <div class="light-control-unit">
+                <h5>Intensity</h5>
+                <rzslider
+                    rz-slider-model="selectedLight.config.intensity"
+                    rz-slider-options="sliderOptions[0]"
+                ></rzslider>
+            </div>
+            <div class="light-control-unit" ng-show="selectedLight.config.type === 'spot' || selectedLight.config.type === 'point'">
+                <h5>Distance</h5>
+                <rzslider
+                    rz-slider-model="selectedLight.config.distance"
+                    rz-slider-options="sliderOptions[1]"
+                ></rzslider>
+            </div>
+            <div class="light-control-unit" ng-show="selectedLight.config.type === 'spot'">
+                <h5>Angle</h5>
+                <rzslider
+                    rz-slider-model="selectedLight.config.angle"
+                    rz-slider-options="sliderOptions[2]"
+                ></rzslider>
+            </div>
+            <div class="light-control-unit" ng-show="selectedLight.config.type === 'spot'">
+                <h5>Softness</h5>
+                <rzslider
+                    rz-slider-model="selectedLight.config.softness"
+                    rz-slider-options="sliderOptions[3]"
+                ></rzslider>
+            </div>
+        </div>
+    </div>
+</div>
